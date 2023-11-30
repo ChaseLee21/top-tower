@@ -10,16 +10,16 @@
                         <BCardBody id="equipment">
                             <BListGroup>
                                 <BListGroupItem>
-                                    Helm: none
+                                    Helm: {{ props.character.equipment.helm.name }}
                                 </BListGroupItem>
                                 <BListGroupItem>
-                                    Chest: Cloth Robe
+                                    Armor: {{ props.character.equipment.armor.name }}
                                 </BListGroupItem>
                                 <BListGroupItem>
-                                    Boots: Torn Leather Boots
+                                    Boots: {{ props.character.equipment.boots.name }}
                                 </BListGroupItem>
                                 <BListGroupItem>
-                                    Weapon: Copper Short Sword
+                                    Weapon: {{ props.character.equipment.weapon.name }}
                                 </BListGroupItem>
                             </BListGroup>
                         </BCardBody>
@@ -30,15 +30,15 @@
                 <BCard>
                     <BCardHeader>
                         <BCardTitle>
-                            <h2>Character</h2>
+                            <h2> {{ props.character.name }} </h2>
                         </BCardTitle>
                         <BCardBody id="character">
                             <BListGroup>
                                 <BListGroupItem>
-                                    Health: 100
+                                    Health: {{ props.character.health }}
                                 </BListGroupItem>
                                 <BListGroupItem>
-                                    Attack: 2
+                                    Attack: {{ props.character.attack }}
                                 </BListGroupItem>
                             </BListGroup>
                         </BCardBody>
@@ -53,11 +53,8 @@
                         </BCardTitle>
                         <BCardBody id="inventory">
                             <BListGroup>
-                                <BListGroupItem>
-                                    Some Item
-                                </BListGroupItem>
-                                <BListGroupItem>
-                                    Another Item
+                                <BListGroupItem v-for="item in props.character.inventory">
+                                    <BButton variant="primary" class="btn-sm">{{item.name}}</BButton>
                                 </BListGroupItem>
                             </BListGroup>
                         </BCardBody>
@@ -67,3 +64,20 @@
         </BRow>
     </BCardGroup>
 </template>
+
+<script setup>
+import { BCardGroup, BCard, BCardHeader, BCardBody, BCardTitle, BListGroup, BListGroupItem, BRow, BCol } from 'bootstrap-vue-next';
+import { defineProps, onMounted } from 'vue';
+
+const props = defineProps({
+    character: {
+        type: Object,
+        required: true
+    }
+})
+
+onMounted(() => {
+    console.log(props.character);
+})
+
+</script>
