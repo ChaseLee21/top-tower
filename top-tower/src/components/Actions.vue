@@ -18,8 +18,7 @@ const props = defineProps({
 })
 
 const handleAction = (action) => {
-    emit('action', action.roomIndex);
-    console.log(action.roomIndex);
+    emit('action', action);
 }
 
 
