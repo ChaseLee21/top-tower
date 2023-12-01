@@ -124,6 +124,20 @@ const rooms = [
         roomIndex: 5
       },
     ]
+  },
+  {
+    title: 'Stone Stairs',
+    text: 'With the skeevers dead you go through the door and proceed down some stairs made of stone. At the bottom of the stairs a passage leads to the left and right. You hear a noise coming from the left.',
+    actions: [
+      {
+        text: 'Go Left',
+        roomIndex: 6
+      },
+      {
+        text: 'Go Right',
+        roomIndex: 7
+      }
+    ]
   }
 ];
 
